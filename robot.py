@@ -21,4 +21,4 @@ class Robot:
   def reset_gyro(cls):
     gyro.angle()
     gyro.speed()
-  +  gyro.angle()
+    gyro.angle()
