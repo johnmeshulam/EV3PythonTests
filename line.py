@@ -21,7 +21,7 @@ def align(drive_speed, align_speed):
     while(not aligned):
       right_value, left_value, on_line, aligned = calc_line()
       Robot.brick.screen.print(left_value, right_value)      
-    Robot.brake()
+  Robot.brake()
 
 def calc_line():
   right_value = Robot.color_right.reflection()
