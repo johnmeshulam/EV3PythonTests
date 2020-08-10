@@ -1,4 +1,4 @@
-from runs.run import Run
+from util.run import Run
 import line
 
 class Run1(Run):

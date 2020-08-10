@@ -5,6 +5,7 @@ from runs.run1 import Run1
 import input
 
 runs = [Run1("line align"), Run1("test"), Run1("test2"), Run1("test3"), Run1("test4"), Run1("test5")]
+current_run = None
 index = 0
 
 def display_menu():
@@ -42,8 +43,7 @@ while True:
     display_running()
     runs[index].run()
 
-
-
-
+    while(not input.button(Button.CENTER) and input.button(Button.DOWN)):
+      pass
 
 
