@@ -1,5 +1,6 @@
 #!/usr/bin/env pybricks-micropython
 from pybricks.parameters import Button
+import pybricks.tools as tools
 from robot import Robot
 from runs.run1 import Run1
 import input
@@ -25,6 +26,7 @@ def display_running():
   Robot.brick.screen.clear()
   Robot.brick.screen.draw_text(0, 0, "Currently Running ")
   Robot.brick.screen.draw_text(0, 20, runs[index].name + "...")
+  print("display running")
 
 while True:
   display_menu()
@@ -41,9 +43,14 @@ while True:
     print(index)
   elif(input.button_down(Button.CENTER)):
     display_running()
+    #current_run = _thread.start_new_thread(runs[index].run, (0,))
     runs[index].run()
+    print("main thread")
 
-    while(not input.button(Button.CENTER) and input.button(Button.DOWN)):
-      pass
+    tools.wait(500)
+
+    
+
+    
 
 

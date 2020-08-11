@@ -10,9 +10,7 @@ lastPressed = {
   Button.CENTER: time.time()
 }
 
-refreshTime = 0.35
-
-def button_down(button):
+def button_down(button, refreshTime = 0.35):
   if(lastPressed[button] + refreshTime <= time.time()):
     lastPressed[button] = time.time()
     return button in Robot.brick.buttons.pressed()

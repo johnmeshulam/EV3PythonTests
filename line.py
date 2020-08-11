@@ -1,6 +1,8 @@
 from robot import Robot
 import input
 from pybricks.parameters import Button
+from util.run import Run
+
 black = 10 #needs to be calibrated
 
 def align(drive_speed, align_speed):
@@ -8,20 +10,21 @@ def align(drive_speed, align_speed):
 
   if(not on_line):
     Robot.chassis.drive(drive_speed, 0)
-    while(not on_line and not input.button(Button.LEFT)):
+    while(not on_line and Run.running()):
       right_value, left_value, on_line, aligned = calc_line()
     Robot.chassis.stop()
     Robot.brake()
-      
+  print("on line")
   if(not aligned):
     if(right_value < black):
       Robot.wheel_left.run(align_speed)
     elif(left_value < black):
       Robot.wheel_right.run(align_speed)
 
-    while(not aligned and not input.button(Button.LEFT)):
+    while(not aligned and Run.running()):
       right_value, left_value, on_line, aligned = calc_line()
       Robot.brick.screen.print(left_value, right_value)  
+  print("align")
 
   Robot.brake()
 
