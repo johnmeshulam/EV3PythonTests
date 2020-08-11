@@ -1,9 +1,8 @@
 from pybricks.parameters import Button
-from util.robot import Robot
-import time
+from robot import Robot
 
 def button_pressed(btn):
-  return btn in Robot.brick.buttons.pressed()
+    return btn in Robot.brick.buttons.pressed()
 
 def wait_for_press(btn):
   while(not button_pressed(btn)):

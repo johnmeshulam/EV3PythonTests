@@ -1,4 +1,4 @@
-from functions import line
+from util import line
 from util.robot import Robot
 
 name = "reset light"

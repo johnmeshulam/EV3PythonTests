@@ -1,6 +1,6 @@
-from functions import line
+from util import line
 
 name = "line align"
 
 def start():
-  line.align(100, 70)
+  line.align(100, 100)
