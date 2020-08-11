@@ -33,6 +33,8 @@ class Robot:
     cls.gyro.angle()
     cls.gyro.speed()
     cls.gyro.angle()
+
+    cls.gyro.reset_angle(0)
   
   @classmethod
   def reset_light(cls):
