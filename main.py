@@ -32,22 +32,19 @@ while True:
   display_menu()
   pressed = Robot.brick.buttons.pressed()
 
-  while(len(pressed) == 0):
-    pressed = Robot.brick.buttons.pressed()
-
-  if(input.button_down(Button.DOWN) and index < len(runs) - 1):
+  btn = input.wait_for_any_press()
+  print(btn)
+  if(btn==Button.DOWN and index < len(runs) - 1):
     index += 1
     print(index)
-  elif(input.button_down(Button.UP) and index > 0):
+  elif(btn==Button.UP and index > 0):
     index -= 1
     print(index)
-  elif(input.button_down(Button.CENTER)):
+  elif(btn==Button.CENTER):
     display_running()
     #current_run = _thread.start_new_thread(runs[index].run, (0,))
     runs[index].run()
-    print("main thread")
-
-    tools.wait(500)
+    tools.wait(700)
 
     
 
