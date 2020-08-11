@@ -1,4 +1,4 @@
-import input
+import util.input as input
 from pybricks.parameters import Button
 
 class Run():

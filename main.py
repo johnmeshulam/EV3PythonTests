@@ -1,9 +1,10 @@
 #!/usr/bin/env pybricks-micropython
 from pybricks.parameters import Button
 import pybricks.tools as tools
-from robot import Robot
+from util.robot import Robot
+import util.input as input
 from runs.run1 import Run1
-import input
+
 
 runs = [Run1("line align"), Run1("test"), Run1("test2"), Run1("test3"), Run1("test4"), Run1("test5")]
 current_run = None

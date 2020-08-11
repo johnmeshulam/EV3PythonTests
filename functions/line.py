@@ -1,5 +1,5 @@
-from robot import Robot
-import input
+from util.robot import Robot
+import util.input
 from pybricks.parameters import Button
 from util.run import Run
 

@@ -1,5 +1,5 @@
 from pybricks.parameters import Button
-from robot import Robot
+from util.robot import Robot
 import time
 
 lastPressed = {
