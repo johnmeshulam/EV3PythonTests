@@ -4,9 +4,10 @@ import pybricks.tools as tools
 from util.robot import Robot
 import util.input as input
 from runs.run1 import Run1
+from runs.light_cal import Light_Cal
 
 
-runs = [Run1("line align"), Run1("test"), Run1("test2"), Run1("test3"), Run1("test4"), Run1("test5")]
+runs = [Run1("line align"), Light_Cal("reset light"), Run1("test2"), Run1("test3"), Run1("test4"), Run1("test5")]
 current_run = None
 index = 0
 
@@ -23,12 +24,6 @@ def display_menu():
     Robot.brick.screen.draw_text(0, i * 20, prefix + run.name)
     i += 1
 
-def display_running():
-  Robot.brick.screen.clear()
-  Robot.brick.screen.draw_text(0, 0, "Currently Running ")
-  Robot.brick.screen.draw_text(0, 20, runs[index].name + "...")
-  print("display running")
-
 while True:
   display_menu()
   pressed = Robot.brick.buttons.pressed()
@@ -42,8 +37,7 @@ while True:
     index -= 1
     print(index)
   elif(btn==Button.CENTER):
-    display_running()
-    #current_run = _thread.start_new_thread(runs[index].run, (0,))
+    Robot.brick.screen.clear()
     runs[index].run()
     tools.wait(700)
 

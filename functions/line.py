@@ -4,6 +4,7 @@ from pybricks.parameters import Button
 from util.run import Run
 
 black = 10 #needs to be calibrated
+white = 70
 
 def align(drive_speed, align_speed):
   right_value, left_value, on_line, aligned = calc_line()

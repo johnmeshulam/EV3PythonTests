@@ -22,22 +22,28 @@ def button_down(btn, refreshTime = 0.35):
   return False
 
 def wait_for_press(btn):
-  while(not button(btn)):
-    pass
-  while(button(btn)):
-    pass
+  while True:
+    while(not button(btn)):
+      pass
+
+    start_time = time.time()
+
+    while(button(btn)):
+      pass
+    
+    if(time.time() < start_time + press_time):
+      return
 
 def wait_for_any_press():
-  while(len(Robot.brick.buttons.pressed()) == 0):
-    pass
+  while True:
+    while(len(Robot.brick.buttons.pressed()) == 0):
+      pass
 
-  start_time = time.time()
-  btn = Robot.brick.buttons.pressed()[0]
+    start_time = time.time()
+    btn = Robot.brick.buttons.pressed()[0]
 
-  while(len(Robot.brick.buttons.pressed()) > 0):
-    pass
+    while(len(Robot.brick.buttons.pressed()) > 0):
+      pass
 
-  if(time.time() >= start_time + press_time):
-    return None
-
-  return btn
+    if(time.time() < start_time + press_time):
+      return btn
