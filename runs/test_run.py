@@ -11,6 +11,4 @@ def start():
   wait(10)
   gyro.follow_distance(80, 15, 60, 0.5)
   wait(10)
-  Robot.brick.screen.print("finished gyro follow")
   Robot.arm_left.run_angle(600, 700)
-  Robot.brick.screen.print("finished close arm")
