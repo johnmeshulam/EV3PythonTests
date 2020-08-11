@@ -3,13 +3,13 @@ from pybricks.parameters import Button
 import pybricks.tools as tools
 from util import buttons
 from util.robot import Robot
-from runs import run1, light_cal
+from runs import gyro_run, light_run, light_cal
 
 def display_menu():
   Robot.brick.screen.clear()
-  Robot.brick.screen.print(" ^ " + run1.name)
-  Robot.brick.screen.print(" > " + light_cal.name)
-  #Robot.brick.screen.print(" v " + .name)
+  Robot.brick.screen.print(" ^ " + light_run.name)
+  Robot.brick.screen.print(" > " + gyro_run.name)
+  Robot.brick.screen.print(" v " + light_cal.name)
   #Robot.brick.screen.print(" < " + .name)
   #Robot.brick.screen.print("[] " + .name)
 
@@ -20,16 +20,19 @@ while True:
   print(btn)
 
   if(btn==Button.UP):
+    light_run.start()
     pass
-    run1.start()
   elif(btn==Button.RIGHT):
+    gyro_run.start()
     pass
-    light_cal.start()
   elif(btn==Button.DOWN):
+    light_cal.start()
     pass
   elif(btn==Button.LEFT):
+    #your run here
     pass
   elif(btn==Button.CENTER):
+    #your run here
     pass
 
     

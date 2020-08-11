@@ -1,22 +1,20 @@
 from util.robot import Robot
 from pybricks.parameters import Button
-from util.run import Run
-
-
+from pybricks.tools import wait
 
 def align(drive_speed, align_speed):
   forgiveness = 5
   black = Robot.black + forgiveness
 
-  right_value, left_value, on_line, aligned = calc_line(black)
+  right_value, left_value = robot.get_light()
 
   if(not on_line):
     Robot.chassis.drive(drive_speed, 0)
     while(not on_line):
-      right_value, left_value, on_line, aligned = calc_line(black)
+      right_value, left_value = robot.get_light()
     Robot.chassis.stop()
     Robot.brake()
-  print("on line")
+
   if(not aligned):
     if(right_value <= black):
       Robot.wheel_left.run(align_speed)
@@ -24,19 +22,29 @@ def align(drive_speed, align_speed):
       Robot.wheel_right.run(align_speed)
 
     while(not aligned):
-      right_value, left_value, on_line, aligned = calc_line(black)
+      right_value, left_value = robot.get_light()
       Robot.brick.screen.print(left_value, right_value)  
-  print("align")
 
   Robot.brake()
 
-def calc_line(black):
-  right_value = Robot.color_right.reflection()
-  left_value = Robot.color_left.reflection()
+def on_line(black):
+  return right_value <= black or left_value <= black
 
-  print(left_value, right_value)
+def aligned(black):
+  return right_value <= black and left_value <= black
 
-  on_line = right_value <= black or left_value <= black
-  aligned = right_value <= black and left_value <= black
+#for higher versions - create side enum and pass is instead of sensor, add line side parameter
+def follow_distance(distance, sensor, speed, kp):
+  Robot.chassis.reset()
+  target = (Robot.black + Robot.white) / 2
 
-  return (right_value, left_value, on_line, aligned)
+  while Robot.chassis.distance() < distance:
+    error = sensor.reflection() - target
+    turn = error * kp
+    Robot.brick.screen.print(Robot.chassis.distance())
+    Robot.chassis.drive(speed, turn)
+
+    wait(10)
+
+  
+  Robot.brake()

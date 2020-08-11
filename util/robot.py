@@ -2,6 +2,7 @@ from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import Motor, GyroSensor, ColorSensor
 from pybricks.parameters import Port, Direction, Button
 from pybricks.robotics import DriveBase
+from pybricks.tools import wait
 from util import buttons
 class Robot():
 
@@ -29,11 +30,15 @@ class Robot():
 
   @classmethod
   def reset_gyro(cls):
+    cls.gyro.reset_angle(0)
+
     cls.gyro.angle()
     cls.gyro.speed()
     cls.gyro.angle()
+    
+    wait(10)
 
-    cls.gyro.reset_angle(0)
+
 
   @classmethod
   def reset_light(cls):
@@ -50,3 +55,7 @@ class Robot():
 
     cls.brick.screen.draw_text(120, 20, str(cls.white))
     buttons.wait_for_press(Button.CENTER)
+
+  @classmethod 
+  def get_light(cls):
+    return (cls.color_left.reflection(), cls.color_right.reflection())
