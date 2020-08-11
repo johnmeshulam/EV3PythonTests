@@ -40,6 +40,8 @@ class Robot:
   def reset_light(cls):
     from util import input
 
+    cls.brick.screen.clear()
+
     cls.brick.screen.draw_text(0, 0, "reset black")
     input.wait_for_press(Button.CENTER)
     cls.black = cls.color_left.reflection()

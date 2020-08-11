@@ -36,7 +36,7 @@ def wait_for_press(btn):
 
 def wait_for_any_press():
   while True:
-    while(len(Robot.brick.buttons.pressed()) == 0):
+    while(not len(Robot.brick.buttons.pressed()) == 1):
       pass
 
     start_time = time.time()

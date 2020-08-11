@@ -1,7 +1,6 @@
-from util.run import Run
 from functions import line
 
-class Run1(Run):
+name = "line align"
 
-  def run(self):
-      line.align(100, 70)
+def start():
+  line.align(100, 70)

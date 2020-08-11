@@ -11,7 +11,7 @@ def align(drive_speed, align_speed):
 
   if(not on_line):
     Robot.chassis.drive(drive_speed, 0)
-    while(not on_line and Run.running()):
+    while(not on_line):
       right_value, left_value, on_line, aligned = calc_line()
     Robot.chassis.stop()
     Robot.brake()
@@ -22,7 +22,7 @@ def align(drive_speed, align_speed):
     elif(left_value < black):
       Robot.wheel_right.run(align_speed)
 
-    while(not aligned and Run.running()):
+    while(not aligned):
       right_value, left_value, on_line, aligned = calc_line()
       Robot.brick.screen.print(left_value, right_value)  
   print("align")

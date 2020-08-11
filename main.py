@@ -1,28 +1,18 @@
 #!/usr/bin/env pybricks-micropython
 from pybricks.parameters import Button
 import pybricks.tools as tools
+from pybricks.media.ev3dev import Font
 from util.robot import Robot
 import util.input as input
-from runs.run1 import Run1
-from runs.light_cal import Light_Cal
-
-
-runs = [Run1("line align"), Light_Cal("reset light"), Run1("test2"), Run1("test3"), Run1("test4"), Run1("test5")]
-current_run = None
-index = 0
+from runs import run1, light_cal
 
 def display_menu():
   Robot.brick.screen.clear()
-  i = 0
-  prefix = " "
-  for run in runs:
-    if(i == index):
-      prefix = ">"
-    else:
-      prefix = " "
-
-    Robot.brick.screen.draw_text(0, i * 20, prefix + run.name)
-    i += 1
+  Robot.brick.screen.print(" ^ " + run1.name)
+  Robot.brick.screen.print(" > " + light_cal.name)
+  #Robot.brick.screen.print(" v " + .name)
+  #Robot.brick.screen.print(" < " + .name)
+  #Robot.brick.screen.print("[] " + .name)
 
 while True:
   display_menu()
@@ -30,16 +20,19 @@ while True:
 
   btn = input.wait_for_any_press()
   print(btn)
-  if(btn==Button.DOWN and index < len(runs) - 1):
-    index += 1
-    print(index)
-  elif(btn==Button.UP and index > 0):
-    index -= 1
-    print(index)
+
+  if(btn==Button.UP):
+    pass
+    run1.start()
+  elif(btn==Button.RIGHT):
+    pass
+    light_cal.start()
+  elif(btn==Button.DOWN):
+    pass
+  elif(btn==Button.LEFT):
+    pass
   elif(btn==Button.CENTER):
-    Robot.brick.screen.clear()
-    runs[index].run()
-    tools.wait(700)
+    pass
 
     
 
