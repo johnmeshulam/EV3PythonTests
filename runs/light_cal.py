@@ -1,5 +1,5 @@
 from util import line
-from util.robot import Robot
+from robot import Robot
 
 name = "reset light"
 

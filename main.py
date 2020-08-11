@@ -2,7 +2,7 @@
 from pybricks.parameters import Button
 import pybricks.tools as tools
 from util import buttons
-from util.robot import Robot
+from robot import Robot
 from runs import gyro_run, light_run, light_cal, test_run
 
 def display_menu():

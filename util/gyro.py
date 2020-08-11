@@ -1,4 +1,4 @@
-from util.robot import Robot
+from robot import Robot
 from pybricks.parameters import Button
 from pybricks.tools import wait
 

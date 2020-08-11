@@ -1,5 +1,5 @@
 from util import line, gyro
-from util.robot import Robot
+from robot import Robot
 
 name = "line follow"
 
