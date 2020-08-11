@@ -12,6 +12,9 @@ class Robot():
   wheel_left = Motor(Port.B)
   wheel_right = Motor(Port.C)
 
+  arm_left = Motor(Port.A)
+  arm_right = Motor(Port.D)
+
   gyro = GyroSensor(Port.S1, Direction.COUNTERCLOCKWISE)
   color_left = ColorSensor(Port.S2)
   color_right = ColorSensor(Port.S4)
